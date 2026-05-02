@@ -1,0 +1,703 @@
+
+:root {
+    --primary-crimson: #8b0000; 
+    --accent-bronze: #cd7f32; 
+    --gold-leaf: #fac003;
+    --deep-black: #050505;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #e0e0e0;
+    --transition: all 0.3s ease;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    
+}
+
+body {
+    background-color: black;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    
+    
+}
+
+.content-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-leaf);
+    font-family: 'Cinzel', serif;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.company-name {
+    display: block;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--gold-leaf);
+}
+
+.company-suffix {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: var(--text-main);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-crimson);
+}
+
+.nav-cta {
+    background: linear-gradient(45deg, var(--primary-crimson), #4a0000);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-bronze);
+}
+
+/* Hero Section */
+.main-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e0000 0%, #050505 100%);
+    padding-top: 80px;
+    position: relative; 
+    overflow: hidden;    
+    font-family: 'Cinzel', serif;
+}
+
+
+.main-hero::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;  
+    height: 70vw;
+    background-image: url('images/image copy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2; 
+    filter: brightness(0.7) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-text-box {
+    position: relative;
+    z-index: 1; 
+}
+
+.hero-text-box h1 {
+    font-family: 'Cinzel', serif; 
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    letter-spacing: 4px;
+    color: var(--gold-leaf); 
+     background: linear-gradient(to right, var(--gold-leaf), var(--accent-bronze), var(--gold-leaf));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4));
+    animation: shine 5s linear infinite;
+}
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+
+
+
+/* Matrix & Grid Cards (Glassmorphism & Super Icons) */
+.matrix-container, .detailed-services, .leadership-grid, .social-channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.matrix-box, .service-item, .executive-card, .channel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    text-align: center; /* Centering for the professional icon layout */
+}
+
+/* The Super Icon Wrapper */
+.icon-wrapper {
+    width: 200px;
+    height: 150px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    border-radius: 22px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    
+}
+
+.icon-wrapper i {
+    font-size: 2.8rem;
+    color: #fff;
+    /* Neon 'Shining' effect */
+    /* filter: drop-shadow(0 0 10px var(--primary-crimson)); */
+}
+
+
+/* Service specifics */
+.service-num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary-crimson);
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* Leadership Photos */
+
+.executive-image-container {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    /* border: 3px solid var(--primary-crimson); */
+    /* box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); Crimson Glow */
+    transition: var(--transition);
+}
+
+.executive-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-fit: cover;
+    object-position: top center; 
+    transform: scale(1.05); 
+    transition: transform 0.5s ease;
+}
+
+.executive-card h5{
+    color: var(--primary-crimson);
+}
+
+/* Executive Social Link Styling */
+.executive-card a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+}
+
+/* Specific Instagram Brand Touch */
+.executive-card a i {
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.executive-card a:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(220, 39, 67, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Reset icon color on hover so it's visible against the gradient background */
+.executive-card a:hover i {
+    -webkit-text-fill-color: white;
+}
+
+/* Social Connect Styling */
+/* Social Channel Grid Layout */
+.social-channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Glassmorphic Channel Card */
+.channel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    padding: 40px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Super Icon Styling with 3D Depth */
+.social-icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Individual Brand Gradients */
+.fb { background: linear-gradient(135deg, #1877F2, #0056b3); }
+.ig { background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.x-twitter { background: #000; border-color: #333; }
+
+.tiktok { 
+    background: #000000; 
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+   
+}
+
+
+
+
+
+.channel:hover .social-icon-box {
+    
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+
+.social-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--primary-crimson);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.social-btn:hover {
+    background: var(--primary-crimson);
+    color: white;
+    box-shadow: 0 0 20px var(--primary-crimson);
+    transform: translateY(-2px);
+}
+
+/* Button Shimmer Animation */
+.social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.social-btn:hover::before {
+    left: 100%;
+}
+
+/* Text Polish */
+.channel strong {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.channel span {
+    display: block;
+    font-size: 0.85rem;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+/* Hamburger Menu Logic */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    margin: 5px;
+    display: block;
+    transition: var(--transition);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 968px) {
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(5, 5, 5, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 40px 0;
+        border-bottom: 1px solid var(--primary-crimson);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
+
+:root {
+    --primary-crimson: #8b0000; /* Ensure this matches your site's crimson variable */
+}
+
+/* Core Footer Container */
+.super-footer {
+    background: #050505;
+    padding: 100px 0 40px;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif; /* Recommended for a clean corporate look */
+}
+
+/* Atmospheric Ambient Glow */
+.footer-ambient-glow {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Precision Glow Line */
+.footer-glow-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-crimson) 50%, 
+        transparent 100%);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.8fr 0.8fr;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo & Branding */
+.footer-logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.1);
+    text-transform: uppercase;
+}
+
+.footer-logo span { 
+    color: var(--primary-crimson); 
+}
+
+.footer-brand p {
+    color: #888;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    max-width: 320px;
+}
+
+/* Operational Status Capsule */
+.footer-status-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 15px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    margin-top: 25px;
+}
+
+.status-pulse {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+}
+
+.status-text {
+    font-size: 0.75rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Social Icons - Permanent Brand Colors --- */
+.footer-social-v2 {
+    display: flex;
+    gap: 15px;
+}
+
+.s-link {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.3rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+/* Facebook Blue */
+.fb-elite { 
+    background: #1877F2; 
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3); 
+}
+
+/* Instagram Gradient */
+.ig-elite { 
+    background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); 
+}
+
+/* X (Twitter) Black */
+.x-elite { 
+    background: #000; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); 
+}
+
+/* TikTok Deep Black */
+.tk-elite { 
+    background: #000; 
+    box-shadow: -2px -2px 8px rgba(37, 244, 238, 0.4), 2px 2px 8px rgba(254, 44, 85, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Social Hover State */
+.s-link:hover { 
+    transform: translateY(-8px) scale(1.1); 
+    color: #fff;
+    filter: brightness(1.15);
+}
+
+.fb-elite:hover { box-shadow: 0 12px 25px rgba(24, 119, 242, 0.5); }
+.ig-elite:hover { box-shadow: 0 12px 25px rgba(220, 39, 67, 0.5); }
+.x-elite:hover { box-shadow: 0 12px 25px rgba(255, 255, 255, 0.2); }
+.tk-elite:hover { 
+    box-shadow: -5px -5px 15px rgba(37, 244, 238, 0.7), 5px 5px 15px rgba(254, 44, 85, 0.7); 
+}
+
+/* --- Navigation Links --- */
+.footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-links-v2 {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links-v2 li {
+    margin-bottom: 15px;
+}
+
+.footer-links-v2 a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links-v2 a span {
+    color: var(--primary-crimson);
+    font-family: monospace;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.footer-links-v2 a:hover {
+    color: #fff;
+    transform: translateX(8px);
+}
+
+/* --- Bottom Copyright Bar --- */
+.footer-bottom-v2 {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.footer-copyright strong {
+    color: #888;
+    font-weight: 600;
+}
+
+.footer-tagline {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.4;
+}
+
+/* --- Responsive Adaptability --- */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .super-footer {
+        padding: 60px 0 30px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-brand p {
+        margin: 0 auto;
+    }
+    .footer-social-v2 {
+        justify-content: center;
+    }
+    .footer-links-v2 a {
+        justify-content: center;
+    }
+    .footer-links-v2 a:hover {
+        transform: translateY(-3px);
+    }
+    .footer-bottom-v2 {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
