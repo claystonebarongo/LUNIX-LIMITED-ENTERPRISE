@@ -7,26 +7,22 @@
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-main: #e0e0e0;
-    --transition: all 0.3s ease;
+    --text-muted: #aaa; 
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-    
 }
 
 body {
     background-color: black;
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.8; 
     overflow-x: hidden;
-    
-    
-    
 }
 
 .content-wrap {
@@ -42,7 +38,13 @@ h1, h2, h3, h4 {
     font-family: 'Cinzel', serif;
 }
 
+p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 400;
+}
 
+/* --- 2. NAVIGATION BAR --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -104,9 +106,12 @@ h1, h2, h3, h4 {
     padding: 10px 20px;
     border-radius: 5px;
     border: 1px solid var(--accent-bronze);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-/* Hero Section */
+/* --- 3. HERO SECTION --- */
 .main-hero {
     height: 100vh;
     display: flex;
@@ -117,9 +122,7 @@ h1, h2, h3, h4 {
     padding-top: 80px;
     position: relative; 
     overflow: hidden;    
-    font-family: 'Cinzel', serif;
 }
-
 
 .main-hero::before {
     content: "";
@@ -133,7 +136,7 @@ h1, h2, h3, h4 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.2; 
+    opacity: 0.15; 
     filter: brightness(0.7) contrast(1.2);
     z-index: 0;
     pointer-events: none;
@@ -145,11 +148,8 @@ h1, h2, h3, h4 {
 }
 
 .hero-text-box h1 {
-    font-family: 'Cinzel', serif; 
     font-size: clamp(2.5rem, 8vw, 5rem);
-    letter-spacing: 4px;
-    color: var(--gold-leaf); 
-     background: linear-gradient(to right, var(--gold-leaf), var(--accent-bronze), var(--gold-leaf));
+    background: linear-gradient(to right, var(--gold-leaf), var(--accent-bronze), var(--gold-leaf));
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -158,88 +158,172 @@ h1, h2, h3, h4 {
     filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4));
     animation: shine 5s linear infinite;
 }
+
 @keyframes shine {
     to { background-position: 200% center; }
 }
 
+/* --- 4. SECTION HEADERS --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pre-title {
+    display: block;
+    color: var(--primary-crimson);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-header h2 span {
+    color: var(--primary-crimson);
+}
 
 
-
-/* Matrix & Grid Cards (Glassmorphism & Super Icons) */
-.matrix-container, .detailed-services, .leadership-grid, .social-channels-grid {
+.overview-grid, .matrix-container, .detailed-services, .leadership-grid, .social-channels-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    perspective: 1000px;
 }
 
-.matrix-box, .service-item, .executive-card, .channel {
+.info-card, .matrix-box, .service-item, .executive-card, .channel {
+    position: relative;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 15px;
     border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
     transition: var(--transition);
-    text-align: center; /* Centering for the professional icon layout */
+    text-align: center;
 }
 
-/* The Super Icon Wrapper */
-.icon-wrapper {
-    width: 200px;
-    height: 150px;
+
+
+
+
+
+
+.info-card::before, .matrix-box::before, .service-item::before, .executive-card::before, .channel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(139, 0, 0, 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+
+/* --- 6. COMPONENT SPECIFICS --- */
+.card-icon, .icon-wrapper, .social-icon-box {
+    font-size: 2.5rem;
+    color: var(--primary-crimson);
     margin: 0 auto 25px;
+    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    border-radius: 22px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-    
+    z-index: 1;
 }
 
-.icon-wrapper i {
-    font-size: 2.8rem;
-    color: #fff;
-    /* Neon 'Shining' effect */
-    /* filter: drop-shadow(0 0 10px var(--primary-crimson)); */
+.icon-wrapper {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
 }
 
-
-/* Service specifics */
-.service-num {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--primary-crimson);
-    margin-bottom: 15px;
-    opacity: 0.5;
-}
-
-/* Leadership Photos */
-
+/* Leadership Imagery */
 .executive-image-container {
     width: 250px;
     height: 250px;
     margin: 0 auto 20px;
     overflow: hidden;
-    border-radius: 10px;
-    /* border: 3px solid var(--primary-crimson); */
-    /* box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); Crimson Glow */
-    transition: var(--transition);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .executive-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     object-position: top center; 
-    transform: scale(1.05); 
+    transform: scale(1.05);
     transition: transform 0.5s ease;
+
+
+
 }
 
-.executive-card h5{
-    color: var(--primary-crimson);
+
+/* --- 7.5 MOBILE NAVIGATION LOGIC --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--gold-leaf);
+    margin: 5px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+
+.menu-toggle.is-active .line:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .line:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+.menu-toggle.is-active .line:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+
+
+
+
+.menu-toggle {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--gold-leaf);
+    margin: 5px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+
+.menu-toggle.is-active .line:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .line:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+.menu-toggle.is-active .line:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+.executive-card:hover .executive-photo {
+    transform: scale(1.15);
 }
 
 /* Executive Social Link Styling */
@@ -255,6 +339,7 @@ h1, h2, h3, h4 {
     font-size: 0.9rem;
     font-weight: 600;
     border-radius: 30px;
+    /* Instagram-inspired gradient border/background */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -278,14 +363,52 @@ h1, h2, h3, h4 {
     color: white;
     text-decoration: none;
 }
+.executive-card h5{
+    color: #8b0000;
+}
 
-/* Reset icon color on hover so it's visible against the gradient background */
+
 .executive-card a:hover i {
     -webkit-text-fill-color: white;
 }
 
-/* Social Connect Styling */
-/* Social Channel Grid Layout */
+.social-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--primary-crimson);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: 0.4s;
+}
+
+.social-btn:hover {
+    background: var(--primary-crimson);
+    box-shadow: 0 0 20px var(--primary-crimson);
+}
+
+
+
+:root {
+    --primary-crimson: #8b0000; /* Ensure this matches your site's crimson variable */
+}
+
+
+.super-footer {
+    background: #050505;
+    padding: 100px 0 40px;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif; /* Recommended for a clean corporate look */
+}
+
+
+
 .social-channels-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -293,7 +416,7 @@ h1, h2, h3, h4 {
     margin-top: 50px;
 }
 
-/* Glassmorphic Channel Card */
+
 .channel {
     background: var(--glass-bg);
     backdrop-filter: blur(15px);
@@ -306,7 +429,7 @@ h1, h2, h3, h4 {
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Super Icon Styling with 3D Depth */
+
 .social-icon-box {
     width: 80px;
     height: 80px;
@@ -322,24 +445,21 @@ h1, h2, h3, h4 {
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Individual Brand Gradients */
+
 .fb { background: linear-gradient(135deg, #1877F2, #0056b3); }
 .ig { background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .x-twitter { background: #000; border-color: #333; }
+.tiktok { background: #000; border-color: #333; }
 
-.tiktok { 
-    background: #000000; 
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-   
+
+.channel:hover {
+    transform: translateY(-20px) scale(1.03);
+    border-color: var(--primary-crimson);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
-
-
-
-
 .channel:hover .social-icon-box {
-    
+    transform: scale(1.2) rotate(15deg);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
@@ -369,7 +489,7 @@ h1, h2, h3, h4 {
     transform: translateY(-2px);
 }
 
-/* Button Shimmer Animation */
+
 .social-btn::before {
     content: '';
     position: absolute;
@@ -400,62 +520,7 @@ h1, h2, h3, h4 {
     margin-bottom: 10px;
 }
 
-/* Hamburger Menu Logic */
-.menu-toggle {
-    display: none;
-    cursor: pointer;
-}
 
-.menu-toggle .line {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-main);
-    margin: 5px;
-    display: block;
-    transition: var(--transition);
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 968px) {
-    .nav-links {
-        position: fixed;
-        right: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: rgba(5, 5, 5, 0.95);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding: 40px 0;
-        border-bottom: 1px solid var(--primary-crimson);
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-
-
-:root {
-    --primary-crimson: #8b0000; /* Ensure this matches your site's crimson variable */
-}
-
-/* Core Footer Container */
-.super-footer {
-    background: #050505;
-    padding: 100px 0 40px;
-    position: relative;
-    color: #fff;
-    overflow: hidden;
-    font-family: 'Inter', sans-serif; /* Recommended for a clean corporate look */
-}
-
-/* Atmospheric Ambient Glow */
 .footer-ambient-glow {
     position: absolute;
     top: -150px;
@@ -467,7 +532,7 @@ h1, h2, h3, h4 {
     pointer-events: none;
 }
 
-/* Precision Glow Line */
+
 .footer-glow-line {
     position: absolute;
     top: 0;
@@ -488,7 +553,7 @@ h1, h2, h3, h4 {
     z-index: 2;
 }
 
-/* Logo & Branding */
+
 .footer-logo {
     font-size: 2.2rem;
     font-weight: 900;
@@ -509,7 +574,7 @@ h1, h2, h3, h4 {
     max-width: 320px;
 }
 
-/* Operational Status Capsule */
+
 .footer-status-capsule {
     display: inline-flex;
     align-items: center;
@@ -542,7 +607,7 @@ h1, h2, h3, h4 {
     letter-spacing: 1px;
 }
 
-/* --- Social Icons - Permanent Brand Colors --- */
+
 .footer-social-v2 {
     display: flex;
     gap: 15px;
@@ -563,33 +628,32 @@ h1, h2, h3, h4 {
     text-decoration: none;
 }
 
-/* Facebook Blue */
+
 .fb-elite { 
     background: #1877F2; 
     box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3); 
 }
 
-/* Instagram Gradient */
+
 .ig-elite { 
     background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
     box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); 
 }
 
-/* X (Twitter) Black */
+
 .x-elite { 
     background: #000; 
     border: 1px solid rgba(255, 255, 255, 0.2); 
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); 
 }
 
-/* TikTok Deep Black */
 .tk-elite { 
     background: #000; 
     box-shadow: -2px -2px 8px rgba(37, 244, 238, 0.4), 2px 2px 8px rgba(254, 44, 85, 0.4); 
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Social Hover State */
+
 .s-link:hover { 
     transform: translateY(-8px) scale(1.1); 
     color: #fff;
@@ -603,7 +667,7 @@ h1, h2, h3, h4 {
     box-shadow: -5px -5px 15px rgba(37, 244, 238, 0.7), 5px 5px 15px rgba(254, 44, 85, 0.7); 
 }
 
-/* --- Navigation Links --- */
+
 .footer-section h4 {
     font-size: 1rem;
     margin-bottom: 25px;
@@ -643,7 +707,7 @@ h1, h2, h3, h4 {
     transform: translateX(8px);
 }
 
-/* --- Bottom Copyright Bar --- */
+
 .footer-bottom-v2 {
     margin-top: 80px;
     padding-top: 30px;
@@ -667,7 +731,7 @@ h1, h2, h3, h4 {
     opacity: 0.4;
 }
 
-/* --- Responsive Adaptability --- */
+
 @media (max-width: 1024px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -698,5 +762,62 @@ h1, h2, h3, h4 {
     .footer-bottom-v2 {
         flex-direction: column;
         gap: 15px;
+    }
+}
+/* --- MOBILE NAVIGATION LOGIC --- */
+
+/* 1. Hide hamburger by default on desktop */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--gold-leaf);
+    margin: 5px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+/* 2. Hamburger to 'X' Animation (triggered by .is-active) */
+.menu-toggle.is-active .line:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .line:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+.menu-toggle.is-active .line:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+
+/* 3. Mobile Specific Styles (Responsive) */
+@media (max-width: 968px) {
+    .menu-toggle {
+        display: flex; /* Show hamburger on mobile */
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Hide off-screen by default */
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease-in-out;
+        border-left: 1px solid var(--primary-crimson);
+        gap: 40px;
+    }
+
+    /* 4. Slide-in logic (triggered by .active) */
+    .nav-links.active {
+        right: 0;
     }
 }
