@@ -764,9 +764,7 @@ p {
         gap: 15px;
     }
 }
-/* --- MOBILE NAVIGATION LOGIC --- */
 
-/* 1. Hide hamburger by default on desktop */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -775,10 +773,10 @@ p {
 }
 
 .menu-toggle .line {
-    width: 30px;
-    height: 3px;
+    width: 27px;
+    height: 2px;
     background-color: var(--gold-leaf);
-    margin: 5px 0;
+    margin: 4px 0;
     transition: var(--transition);
     border-radius: 2px;
 }
