@@ -776,7 +776,7 @@ p {
     width: 27px;
     height: 2px;
     background-color: var(--gold-leaf);
-    margin: 4px 0;
+    margin: 6px 0;
     transition: var(--transition);
     border-radius: 2px;
 }
